@@ -220,12 +220,24 @@ Label(image=small_graph_image).place(x=880, y=500)
 
 #########Button########################## 10
 
-# Load the analysis button image
-analysis_button_image = PhotoImage(file="Images/Analysis.png")
-# Resize the image (adjust the subsampling factor as needed)
-small_analysis_button_image = analysis_button_image.subsample(10, 10)
-# Adjust x and y coordinates to position the button on top of the report image
-Button(root, image=small_analysis_button_image, bd=0, bg=background, cursor='hand2').place(x=1160, y=550)
+# Load the new analysis button image
+new_analysis_button_image = PhotoImage(file="Images/Analysisicon.png")
+
+# Check if the image was loaded successfully
+if new_analysis_button_image:
+    # Print the image object for debugging
+    print("Image loaded successfully:", new_analysis_button_image)
+    
+    # Resize the image
+    small_new_analysis_button_image = new_analysis_button_image.subsample(10, 10)
+    
+    # Adjust x and y coordinates to position the button
+    Button(root, image=small_new_analysis_button_image, bd=0, bg=background, cursor='hand2').place(x=1160, y=550)
+else:
+    # Print an error message if the image loading fails
+    print("Error: Failed to load the image.")
+
+
 
 ############ Save button ################## 11
 analysis_button_image = PhotoImage(file="Images/Save.png")
