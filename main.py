@@ -7,6 +7,7 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from matplotlib.figure import Figure
 import numpy as np
 import matplotlib.pyplot as plt
+from datetime import date
 
 root = Tk()
 root.title("Heart Attack Prediction System")
@@ -52,4 +53,183 @@ entry_date.place(x=420, y=0)  # Adjusted x-coordinate
 entry_birth_year = Entry(registration_frame, font="Arial 12", bg=white_color)
 entry_birth_year.place(x=420, y=35)  # Adjusted x-coordinate
 
+
+###########################Body##################################################4
+Detail_entry=Frame(root,width=490,height=260,bg="#dbe0e3")
+Detail_entry.place(x=30,y=450)
+
+
+################ radio button ######################## 5
+Label(Detail_entry,text= "sex:",font="arial 13",bg=framebg,fg=framefg).place(x=10,y=10)
+Label(Detail_entry,text= "fbs:",font="arial 13",bg=framebg,fg=framefg).place(x=180,y=10)
+Label(Detail_entry,text= "exang:",font="arial 13",bg=framebg,fg=framefg).place(x=328,y=10)
+
+def selection():
+    if gen.get() == 1:
+        Gender = 1
+        return Gender
+    elif gen.get() == 2:
+        Gender = 0
+        return Gender
+
+def selection2():
+    if Fbs.get() == 1:
+        Fbs = 1
+        return Fbs
+    elif Fbs.get() == 2:
+        Fbs = 0
+        return Fbs
+
+def selection3():
+    if exang.get() == 1:
+        Exang = 1
+        return Exang
+    elif exang.get() == 2:
+        Exang = 0
+        return Exang
+
+gen = IntVar()
+R1 = Radiobutton(Detail_entry, text='Female', variable=gen, value=1)
+R2 = Radiobutton(Detail_entry, text='Male', variable=gen, value=2)
+R1.place(x=42,y=10)
+R2.place(x=113,y=10)
+
+Fbs = IntVar()
+R3 = Radiobutton(Detail_entry, text='True', variable=Fbs, value=1)
+R4 = Radiobutton(Detail_entry, text='False', variable=Fbs, value=2)
+R3.place(x=205,y=10)
+R4.place(x=263,y=10)
+
+exang = IntVar()
+R5 = Radiobutton(Detail_entry, text='Yes', variable=exang, value=1)
+R6 = Radiobutton(Detail_entry, text='No', variable=exang, value=2)
+R5.place(x=370,y=10)
+R6.place(x=422,y=10)
+
+
+
+####################Comboboxx ############### 6
+Label(Detail_entry,text="cp:" ,font="arial 13",bg=framebg,fg=framefg).place(x=10,y=50)
+Label(Detail_entry,text= "restcg:",font="arial 13",bg=framebg,fg=framefg).place(x=10,y=90)
+Label(Detail_entry,text="slope:",font="arial 13",bg=framebg,fg=framefg).place(x=10,y=130)
+Label(Detail_entry,text="ca:",font="arial 13",bg=framebg,fg=framefg).place(x=10,y=170)
+Label(Detail_entry,text="thal:" ,font="arial 13",bg=framebg,fg=framefg).place(x=10,y=210)
+
+def selection4():
+   input=cp_combobox.get()
+   if input=="0 = typical angina":
+    return(0)
+   elif input=="1 =atypical angina":
+       return(1)
+   elif input=="2 = non-anginal pain":
+       print(2)
+   elif input=="3 =asymptomatic":
+       return(3)
+   else:
+       print(Exang)
+
+def selection5():
+   input=slope_combobox.get()
+   if input=="0 = upsloping":
+    return(0)
+   elif input=="1 =flat":
+       return(1)
+   elif input=="2 = downsloping":
+       print(2)
+   else:
+       print(Exang)
+       
+
+
+
+
+
+
+
+
+
+
+
+cp_combobox=Combobox(Detail_entry,values=['0=typical angina','1=atypical angina','2=non-anginal pain','3=asymptomatic'],font="arial 12",state="r",width=11)
+restcg_combobox=Combobox(Detail_entry,values=['0','1','2'],font="arial 12",state="r",width=11)
+slope_combobox=Combobox(Detail_entry,values=['0=upsoloping','1=flat','2=downsloping'],font="arial 12",state="r",width=12)
+ca_combobox=Combobox(Detail_entry,values=[ '0','1','2','3','4'],font="arial 12",state="r",width=14)
+thal_combobox=Combobox(Detail_entry,values=['0','1','2','3'],font="arial 12",state="r",width=14)
+
+cp_combobox.place(x=50 , y=50)
+restcg_combobox.place(x=50 , y=90)
+slope_combobox.place(x=50 , y=130)
+ca_combobox.place(x=50 , y=170)
+thal_combobox.place(x=50 , y=210)
+
+
+################Data Entry box ########## 7
+Label(Detail_entry,text="Smoking:",font="arial 13",width=7,bg="#dbe0e3",fg="black").place(x=240,y=50)
+Label(Detail_entry,text="trestbps:",font="arial 13",width=7,bg="#dbe0e3",fg="black").place(x=240,y=90)
+Label(Detail_entry,text="chol:",font="arial 13",width=7,bg="#dbe0e3",fg="black").place(x=240,y=130)
+Label(Detail_entry,text="thalach:",font="arial 13",width=7,bg="#dbe0e3",fg="black").place(x=240,y=170)
+Label(Detail_entry,text="oldpeak:",font="arial 13",width=7,bg="#dbe0e3",fg="black").place(x=240,y=210)
+
+trestbps=StringVar()
+chol=StringVar()
+thalach=StringVar()
+oldpeak=StringVar()
+
+trestbps_entry=Entry(Detail_entry,textvariable=trestbps,width=10,font="arial 15",bg="#ededed",fg="#222222",bd=0)
+chol_entry=Entry(Detail_entry,textvariable=trestbps,width=10,font="arial 15",bg="#ededed",fg="#222222",bd=0)
+thalach_entry=Entry(Detail_entry,textvariable=trestbps,width=10,font="arial 15",bg="#ededed",fg="#222222",bd=0)
+oldpeak_entry=Entry(Detail_entry,textvariable=trestbps,width=10,font="arial 15",bg="#ededed",fg="#222222",bd=0)
+trestbps_entry.place(x=320,y=90)
+chol_entry.place(x=320,y=130)
+thalach_entry.place(x=320,y=170)
+oldpeak_entry.place(x=320,y=210)
+
+#######################################################################
+
+############################## Report ########################## 8
+
+square_report_image = PhotoImage(file="Images/Report.png")
+# Resize the image to half its original size (adjust the value as needed)
+resized_report_image = square_report_image.subsample(2, 2)
+# Adjust x and y coordinates to position the image more upwards and slightly to the left
+report_background = Label(image=resized_report_image, bg=background)
+report_background.place(x=1100, y=300)
+
+# Adjust x and y coordinates to position the report label more upwards and slightly to the left
+report = Label(root, font="arial 25 bold", bg="white", fg="#8dc63f")
+report.place(x=1100, y=300)
+
+# Adjust x and y coordinates to position the report1 label more upwards and slightly to the left
+report1 = Label(root, font="arial 10 bold", bg="white")
+report1.place(x=1060, y=360)
+
+######################################################
+
+
+############# Graph ############################### 9
+
+graph_image = PhotoImage(file="Images/graph.png")
+# Resize the image
+small_graph_image = graph_image.subsample(4, 4)  # Adjust the subsampling factor as needed
+Label(image=small_graph_image).place(x=620, y=270)
+Label(image=small_graph_image).place(x=880, y=270)
+Label(image=small_graph_image).place(x=620, y=500)
+Label(image=small_graph_image).place(x=880, y=500)
+
+
+
+#########Button########################## 10
+
+# Load the analysis button image
+analysis_button_image = PhotoImage(file="Images/Analysis.png")
+# Resize the image (adjust the subsampling factor as needed)
+small_analysis_button_image = analysis_button_image.subsample(10, 10)
+# Adjust x and y coordinates to position the button on top of the report image
+Button(root, image=small_analysis_button_image, bd=0, bg=background, cursor='hand2').place(x=1160, y=550)
+
 root.mainloop()
+
+
+
+
+
