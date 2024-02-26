@@ -227,6 +227,47 @@ small_analysis_button_image = analysis_button_image.subsample(10, 10)
 # Adjust x and y coordinates to position the button on top of the report image
 Button(root, image=small_analysis_button_image, bd=0, bg=background, cursor='hand2').place(x=1160, y=550)
 
+############ Save button ################## 11
+analysis_button_image = PhotoImage(file="Images/Save.png")
+# Resize the image (adjust the subsampling factor as needed)
+small_analysis_button_image = analysis_button_image.subsample(5, 5)
+# Adjust x and y coordinates to position the button on top of the report image
+Button(root, image=small_analysis_button_image, bd=0, bg=background, cursor='hand2').place(x=1255, y=575)
+
+
+################ Smoker sign ################### 12
+
+button_mode=True
+choice="smoking"
+def changemode():
+    global button_mode
+    global choice
+
+    if button_mode:
+        choice = "non_smoking"
+        mode.config(image=non_smoking_icon, activebackground="white")
+        button_mode = False
+    else:
+        choice = "smoking"
+        mode.config(image=smoking_icon, activebackground="white")
+        button_mode = False
+    print(choice)
+
+# Create the smoking and non-smoking icons
+smoking_icon = PhotoImage(file="Images/Smoker.png").subsample(18, 18)  # Adjust subsampling factor as needed
+non_smoking_icon = PhotoImage(file="Images/Non-smoker.png").subsample(18, 18)  # Adjust subsampling factor as needed
+
+# Create the mode button with the smoking icon
+mode = Button(root, image=smoking_icon, bg="#dbe0e3", bd=0, cursor="hand2", command=changemode)
+mode.place(x=370, y=487)  # Adjust the position of the smoking signs as needed
+
+# Create the logout button
+logout_icon = PhotoImage(file="Images/Logout.png").subsample(10, 10)  # Adjust subsampling factor as needed
+logout_button = Button(root, image=logout_icon, bg="#df2d4b", cursor="hand2", bd=0)
+logout_button.place(x=1170, y=670)  # Adjust the position of the logout button as needed
+
+####################################################
+
 root.mainloop()
 
 
